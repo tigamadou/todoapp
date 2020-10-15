@@ -7,12 +7,246 @@
   </head>
 
   <body>
-    <div class="app columns">
-        <div class="sidebar notification is-primary column is-one-fifth">
+      <div class="header">
+          <h1>Todo App</h1>
+      </div>
+    <div class="app">
+        <div class="sidebar">
+            <div class="projects">
+                <div class="header">
 
+                    <h2>
+                        <span>Projects</span>
+                        
+                    </h2>
+                    <button>Create New Project</button>
+                </div>
+                <div class="content">
+
+                    <ul class="porjectList">
+                        <li class="project active">Default Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                        <li class="project">Project Name</li>
+                    </ul>
+                </div>
+            </div>
+            
         </div>
         <div class="container">
+            <div class="header">
 
+                <h2 class="title">Active Project Name</h2>
+                <div class="addNewTodo">Add new Task</div>
+            </div>
+            <div class="body">
+                
+                <form class="form">
+                    <div class="field">
+
+                        <label for="todoTitle">Title</label>
+                        <input class="input" type="text" name="todoTitle" id="todoTitle">
+                    </div>
+                    <div class="field">
+                        <label for="todoDescription">Description</label>                        
+                        <textarea class="input" name="todoDescription" id="todoDescription"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="todoDueDate">Due Date</label>
+                        <input class="input" type="date" name="todoDueDate" id="todoDueDate">
+                    </div>
+                    <div class="field">
+                        <label for="todoPriority">Priority</label>
+                        <select class="input" name="todoPriority" id="todoPriority">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <button>Create</button>
+                </form>
+                <ul class="todoList">
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="todo">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId">
+                        <label for="todoNameId"></label>
+                        <div class="details">
+
+                            <div class="preview">
+    
+                                <span for="todoTitleId">Task Title</span>
+                                <span class="priority low">Low</span>
+                                    <span class="priority medium">Medium</span>
+                                    <span class="priority high">High</span>
+                                <button>Details</button>
+                                <button>Delete</button>
+                            </div>
+                            <div class="details">
+    
+                                <div>
+                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
+                                    <span>Due date</span>
+                                    
+                                </div>
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        
+                    </li>
+                </ul>
+
+                
+            </div>
         </div>
     </div>
   </body>

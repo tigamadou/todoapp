@@ -1,1 +1,2 @@
-document.body.innerHTML('<h1>Todo App</h1>');
+import 'bulma'
+import './scss/style.scss'

@@ -9,6 +9,11 @@ body {
 		box-sizing: border-box;
 	}
 }
+
+.header {
+	text-align: center;
+}
+
 ul{
 	list-style: none;
 	padding: 0;
@@ -41,6 +46,17 @@ ul{
 				flex: 1;
 				flex-grow: 1;
 				overflow: auto;
+				.project-form {
+					text-align: center;
+					padding: 1rem;
+				}
+				.project-btn {
+					margin-top: 10px;
+					padding: 8px;
+					border: 1px solid $primaryColor;
+					border-radius: 5px;
+					width: 50%;
+				}
 				.porjectList{
 					padding: 1rem;
 					.project{

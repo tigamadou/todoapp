@@ -1,0 +1,307 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+$primaryColor: #3498db;
+$default: #ccc;
+$success: #1abc9c;
+$warning: #f39c12;
+$danger:  #e74c3c;
+html,
+body {
+  padding: 0;
+	background: $primaryColor;
+	margin: auto;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	
+}
+*{
+	box-sizing: border-box;
+}
+.header {
+	text-align: center;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+}
+.app {
+  height: 80vh;
+	display: flex;
+	background: #fff;
+	border-radius: 30px;
+	overflow: hidden;
+  .sidebar {
+		margin: 0;
+		background: #fff;
+		width: 20vw;		
+		box-shadow: 5px 0px 5px lighten(#000000, 90%);
+		z-index: 1;
+		.projects{
+			display: flex;
+			flex: 1;
+			height: 100%;
+			flex-direction: column;
+			.header{
+				border-bottom: 1px solid  #f1f1f1;;
+				padding: 1rem;
+				h2{
+					font-size: 3rem;
+					margin: 0 0 16px 0px;
+				}
+			}
+			.content{
+				flex: 1;
+				flex-grow: 1;
+				overflow: auto;
+				.project-form {
+					
+					padding: 1rem;
+				
+					.field{
+						display: flex;
+						border: 1px solid #f1f1f1;
+						border-radius: 10px;
+						overflow: hidden;
+						.input{
+							border-radius: 10px;
+							border: none;
+							padding: 10px;
+							flex: 1;
+							border: none;
+							&:focus{
+								border:none;
+								box-shadow: none;
+							}
+						}
+						.btn {
+							
+							padding: 10px 15px;
+							border: 1px solid #f1f1f1;
+							border-radius: 5px;
+							
+						}
+					}
+				}
+				.porjectList{
+					padding: 1rem;
+					.project{
+						padding: 1rem;
+						transition: all 0.25s ease-in-out;
+						font-weight: 400;
+						font-size: 1.3rem;
+						border-radius: 30px;
+						&:hover{
+							background: $primaryColor;
+							cursor: pointer;
+							color: #8e44ad;
+						}
+						&.active{
+							background: $primaryColor;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.container{
+		
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		.header{
+			background: #f9f9f9;
+			padding: 1rem 2rem;
+			margin: 0;
+			
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.addNewTodo{
+				background: $primaryColor;
+				border: 1px solid darken($primaryColor, 20%);
+				color:#fff;
+				height: 50px;
+				line-height: 50px;
+				font-weight: bold;
+				border-radius: 30px;
+				padding: 0 2rem;
+				box-shadow: 0px 5px 5px -5px darken($primaryColor,10%);
+				cursor: pointer;
+				transition: all 0.25s ease-in-out;
+				&:hover{
+					box-shadow: 0px 10px 5px -5px darken($primaryColor,10%);
+					background: #fff;
+					color: $primaryColor;
+				}
+			}
+		}
+		.body{
+			padding: 2rem;
+			overflow: auto;
+			.button{
+				cursor: pointer;
+				padding: 10px;
+				border-radius: 50%;
+				height: 30px;
+				width: 30px;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1rem;
+				&:hover{
+					background: rgba(0,0,0,.1);
+					
+				}
+			}
+			.form{
+				width: 300px;
+				background: #f9f9f9;
+				padding: 1rem;
+				.field{
+					display: flex;
+					flex-direction: column;
+					margin-bottom: 16px;
+					label{
+						font-size: 1.2rem;
+						margin-bottom: 10px;
+					}
+					.input{
+						border-radius: 10px;
+						border: 1px solid #f1f1f1;
+						padding: 10px;
+					}
+				}
+			}
+
+			.todoList{
+				padding: 2rem 0;
+				.todo{
+					border-radius: 20px;
+					overflow: hidden;
+					display: flex;
+					padding: 2rem;
+					position: relative;
+					transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+					&:hover{
+						box-shadow: 0px 2px 5px rgba(0,0,0,.1),0px 20px 5px -10px rgba(200,200,200,.1);
+						background: #fff;
+					}
+					input[type=checkbox]{
+						position: absolute;
+  					left: -9999px;
+					}
+					input[type=checkbox]+label{
+						position: relative;
+						min-height: 30px;
+						min-width: 30px;
+						margin-right: 2rem;
+						
+					}
+					input[type=checkbox]+label::before{
+						position: absolute;
+						content: '';
+						left: 0px;
+						top: 0px;
+						min-height: 30px;
+						min-width: 30px;
+						border: 2px solid #ccc;
+						border-radius: 50%;
+						z-index: 1;
+						cursor: pointer;
+						box-shadow: inset 0 0px 2px rgba(0,0,0,.1);
+						
+					}
+					input[type=checkbox]+label::after{
+						z-index: 2;
+						cursor: pointer;
+						content: '\2713\0020';
+						position: absolute;
+						left: 0;
+						top: 0;
+						border: 2px solid transparent;
+						min-height: 30px;
+						min-width: 30px;
+						font-size: 1rem;
+						line-height: 30px;
+						text-align: center;
+						color: #fff;
+						background: $success;
+						border-radius: 50%;
+						transform: scale(0);
+						transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+						
+					}
+					input[type=checkbox]:checked+label::after{
+						
+						transform: scale(1);
+					}
+					.details{
+						font-size: 16px;
+						flex: 1;
+						display: flex;
+						
+					}
+					.preview{
+						flex: 1;
+						font-size: 1.2rem;
+						color: #333;
+					
+						line-height: 30px;
+						.title{
+							flex: 1;
+						}
+						.tag{
+							font-size: 1rem;
+							color: #333;
+							.icon{
+								margin-right: 16px;
+								font-size: 1.2rem;
+								color: #ccc;
+							}
+							
+						}
+						
+					}
+					&::after{
+						position: absolute;
+						content: '';
+						left: 0px;
+						top: 0px;
+						bottom: 0px;
+						width: 2px;
+						
+					}
+					&.is-default{
+						&::after{
+							background: $default;
+						}
+					}
+					&.is-low{
+						&::after{
+							background: $success;
+						}
+					}
+					&.is-medium{
+						
+						&::after{
+							background: $warning;
+						}
+					}
+					&.is-high{
+						
+						&::after{
+							background: $danger;
+						}
+					}
+					
+				}
+			}
+		}
+	}
+}

@@ -1,20 +1,24 @@
 const path = require('path');
+require('dotenv').config();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = {
+module.exports = (env) => ({
   entry: './src/index.js',
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Todo App',
-      template: './src/index.html',
+      template: path.resolve(__dirname, 'public/index.html'),
+      filename: 'index.html',
     }),
   ],
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    publicPath: '/',
   },
+  mode: env ? 'production' : 'development',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -35,4 +39,4 @@ module.exports = {
       },
     ],
   },
-};
+});

@@ -7,28 +7,23 @@
   </head>
 
   <body>
-      <div class="header">
-          <h1>Todo App</h1>
-      </div>
+      
     <div class="app">
         <div class="sidebar">
             <div class="projects">
                 <div class="header">
 
-                    <h2>
-                        <span>Projects</span>
-                        
-                    </h2>
+                    <h1>Todo App</h1>
                     <button>Create New Project</button>
                 </div>
                 <div class="content">
                     <form class="project-form">
                         <div class="field">
 
-                            <label for="project-form">Project Name</label>
-                            <input class="input" type="text" name="project-name" id="">
+                            
+                            <input class="input" type="text" name="project-name" id="" placeholder="Project Name">
+                            <button class="btn"> <i class="fa fa-plus"></i> </button>
                         </div>
-                        <button class="project-btn"> Submit </button>
                     </form>
 
                     <ul class="porjectList">
@@ -72,29 +67,30 @@
                     <button id="todoButton">Create</button>
                 </form>
                 <ul class="todoList">
-                    <li class="todo">
-                        <input type="checkbox" name="todoChecklist" id="todoNameId">
-                        <label for="todoNameId"></label>
+                    <li class="todo is-default">
+                        <input type="checkbox" name="todoChecklist" id="todoNameId0">
+                        <label for="todoNameId0"></label>
                         <div class="details">
 
                             <div class="preview">
-    
-                                <span for="todoTitleId">Task Title</span>
-                                <span class="priority low">Low</span>
-                                    <span class="priority medium">Medium</span>
-                                    <span class="priority high">High</span>
-                                <button>Details</button>
-                                <button>Delete</button>
+                               
+
+                                    <div class="title">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                        lore
+                                    </div>
+                                    <div>
+                                        <span class="tag"><span class="icon"><i class="fa fa-calendar"></i></span><span>Today</span></span>
+                                    </div>
+                               
+                            
+                               
+                                
                             </div>
-                            <div class="details">
-    
-                                <div>
-                                    <span for="todoDescriptionId">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span>
-                                    <span>Due date</span>
-                                    
-                                </div>
-                                <button>Edit</button>
+                            <div>
+                                <div class="button showDetails"><i class="fa fa-chevron-right"></i></div>
                             </div>
+                            
                         </div>
                         
                     </li>

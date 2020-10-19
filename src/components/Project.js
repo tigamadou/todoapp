@@ -1,33 +1,25 @@
-class Project {
-  constructor(name) {
-    this.name = name;
-    this.todos = [];
-    this.deleted = false;
-  }
+function Project(vname) {
+  let name = vname;
+  let id = `${vname.toLowerCase().replace(/\W/g, '')}`;
+  const todos = [];
 
-  setName(name) {
-    this.name = name;
-  }
+  this.setName = (vname) => {
+    name = vname;
+  };
 
-  getName() {
-    return this.name;
-  }
+  this.getName = () => name;
 
-  delete() {
-    this.deleted = true;
-  }
+  this.getId = () => id;
 
-  addTodo(todo) {
-    this.todos.push(todo);
-  }
+  this.addTodo = (todo) => {
+    todos.push(todo);
+  };
 
-  deleteTodo(index) {
-    this.todos.splice(index, 1);
-  }
+  this.deleteTodo = (index) => {
+    todos.splice(index, 1);
+  };
 
-  getAll() {
-    return this.todos;
-  }
+  this.getAll = () => todos;
 }
 
 export default Project;

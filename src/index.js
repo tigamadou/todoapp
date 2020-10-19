@@ -1,16 +1,38 @@
 import './assets/styles/style.scss';
-import AppUI from './ui/App';
+import UI from './ui/UI';
+import App from './components/App';
 import Project from './components/Project';
 import Todo from './components/Todo';
 
-const project = new Project('default');
-for (let i = 0; i < 10; i += 1) {
-  project.addTodo(new Todo(`Task ${i}`, `simple description ${i}${1}`, '19/10/2020', 'default'));
-}
+const Layout = new UI();
+const APP = new App();
 
-project.deleteTodo(0);
-function component() {
-  const app = new AppUI();
-  return app.render();
-}
-document.body.appendChild(component());
+document.body.appendChild(Layout.render());
+
+
+Layout.newProjectButton.addEventListener('click', () => {
+  Layout.renderView('newProject');
+});
+Layout.projectForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  const name = Layout.projectFormFieldInput.value;
+  if (name.trim() !== '' && name != null) {
+    const project = new Project(name);
+    let done = APP.addProject(project);
+    if (!done) {
+      alert('Project already existed');
+    }else{
+      Layout.projectFormFieldInput.value='';
+      Layout.addProject(project);
+      Layout.renderView('showProject');
+    }
+  }
+});
+
+
+
+const defaultProject = new Project('Today');
+APP.addProject(defaultProject);
+Layout.addProject(defaultProject);
+Layout.renderView('showProject');

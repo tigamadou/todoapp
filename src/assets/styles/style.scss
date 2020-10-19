@@ -28,7 +28,9 @@ ul{
 	padding: 0;
 }
 .app {
-  height: 80vh;
+	width:100%;
+	width: 1200px;
+  	height: 80vh;
 	display: flex;
 	background: #fff;
 	border-radius: 30px;
@@ -56,7 +58,7 @@ ul{
 				flex: 1;
 				flex-grow: 1;
 				overflow: auto;
-				.project-form {
+				.projectForm {
 					
 					padding: 1rem;
 				
@@ -143,6 +145,11 @@ ul{
 		.body{
 			padding: 2rem;
 			overflow: auto;
+			.defaultView{
+				background-image: url('../images/undraw_accept_request_vdsd.svg');
+				background-size: 100% 100%;
+				height:50vh;
+			}
 			.button{
 				cursor: pointer;
 				padding: 10px;

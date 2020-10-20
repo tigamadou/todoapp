@@ -1,6 +1,7 @@
 function App() {
   const projects = [];
   let selectedProject = null;
+  let selectedTodo = null;
 
   this.storeToLocal = () => {
     const datas = [];
@@ -33,8 +34,27 @@ function App() {
     return false;
   };
 
-  this.deleteTodo = (index) => {
-    projects.splice(index, 1);
+  this.editTodo = data => {
+    const projectIndex = projects.findIndex(element => element.getId() === selectedProject.getId());
+    const project = { ...projects[projectIndex] };
+    const todoIndex = project.getTodos()
+      .findIndex(element => element.getId() === selectedTodo.getId());
+    const todo = { ...selectedTodo };
+    todo.edit('', data.description, data.date, data.priority, todo.isChecked());
+    todo.setName(data.name);
+    todo.setId(data.name);
+    project.updateTodo(todoIndex, todo);
+    projects[projectIndex] = project;
+  };
+
+  this.deleteTodo = () => {
+    const projectIndex = projects.findIndex(element => element.getId() === selectedProject.getId());
+    const project = { ...projects[projectIndex] };
+    const todoIndex = project.getTodos()
+      .findIndex(element => element.getId() === selectedTodo.getId());
+    project.deleteTodo(todoIndex);
+    projects[projectIndex] = project;
+    this.setSelectedProject(project);
   };
 
   this.getAll = () => projects;
@@ -66,6 +86,10 @@ function App() {
   };
   this.setSelectedProject = (project) => {
     selectedProject = project;
+  };
+
+  this.setSelectedTodo = (todo) => {
+    selectedTodo = todo;
   };
 
   this.getSelectedProject = () => {

@@ -16,12 +16,11 @@ if (!localStorage.getItem('projects')) {
   Layout.addProject(defaultProject);
 } else {
   const LocalDatas = JSON.parse(localStorage.getItem('projects'));
-
   LocalDatas.forEach((element) => {
     const project = new Project(element.name);
     element.todos.forEach((todo) => {
       const theTodo = new Todo(todo.name);
-      theTodo.edit(todo.description, todo.date, todo.priority, todo.checked);
+      theTodo.edit(todo.id, todo.description, todo.date, todo.priority, todo.checked);
       project.addTodo(theTodo);
     });
     APP.addProject(project);
@@ -57,18 +56,35 @@ Layout.projectForm.addEventListener('submit', (event) => {
 Layout.app.addEventListener('submit', (event) => {
   event.preventDefault();
   event.stopPropagation();
-  const name = Layout.todoFormFieldInput.value;
-  if (name.trim() !== '' && name != null) {
-    const todo = new Todo(name);
-    const added = APP.addTodo(todo);
-    if (!added) {
-      // alert('Todo already existed in this project');
-      return false;
+  if (event.target.classList.contains('TodoForm')) {
+    const name = Layout.todoFormFieldInput.value;
+    if (name.trim() !== '' && name != null) {
+      const todo = new Todo(name);
+      const added = APP.addTodo(todo);
+      if (!added) {
+        // alert('Todo already existed in this project');
+        return false;
+      }
+      Layout.addTodo(todo);
+      Layout.todoFormFieldInput.value = '';
+      APP.storeToLocal();
+      return true;
     }
-    Layout.addTodo(todo);
-    Layout.todoFormFieldInput.value = '';
+  }
+
+  if (event.target.classList.contains('TodoEditForm')) {
+    const name = Layout.editTodoFormFieldInput.value;
+    const description = Layout.DescriptionTextArea.value;
+    const date = Layout.DateInput.value;
+    const priority = Layout.PriorityInput.value.toLowerCase();
+    APP.editTodo({
+      name, description, date, priority,
+    });
+    const project = APP.getSelectedProject();
+    Layout.selectProject(project);
+    Layout.renderView('default');
+    Layout.renderView('showProject');
     APP.storeToLocal();
-    return true;
   }
   return false;
 });
@@ -100,5 +116,32 @@ Layout.app.addEventListener('click', (event) => {
     APP.upDateTodoChecked(todo);
     APP.storeToLocal();
   }
+
+  if (event.target.classList.contains('todoEditButton') || event.target.classList.contains('fa-pencil')) {
+    const id = event.target.getAttribute('data-id');
+    const todo = APP.getTodo(id);
+    if (!todo) {
+      // alert('Todo Not found!');
+      return false;
+    }
+    APP.setSelectedTodo(todo);
+    Layout.selectTodo(todo);
+  }
+
+  if (event.target.classList.contains('todoGobackButton') || event.target.classList.contains('todoGobackButtonIcon')) {
+    Layout.renderView('default');
+    Layout.renderView('showProject');
+  }
+
+  if (event.target.classList.contains('DeleteTodoButon') || event.target.classList.contains('DeleteTodoButonIcon')) {
+    APP.deleteTodo();
+
+    const project = APP.getSelectedProject();
+    Layout.selectProject(project);
+    Layout.renderView('default');
+    Layout.renderView('showProject');
+    APP.storeToLocal();
+  }
+
   return true;
 });

@@ -1,12 +1,14 @@
 function Todo(vname) {
   let name = vname;
   let description = null;
-  let date = 'Today';
-  let priority = 'medium';
+  let date = null;
+  let priority = 'default';
   let checked = false;
-  const timeStamp = new Date().getTime();
-  const id = `${vname.toLowerCase().replace(/\W/g, '')}${timeStamp}`;
-
+  // const timeStamp = ;
+  let id = `${vname.toLowerCase().replace(/\W/g, '')}${new Date().getTime()}`;
+  this.setId = (name) => {
+    id = `${name.toLowerCase().replace(/\W/g, '')}${new Date().getTime()}`;
+  };
   this.setName = (vname) => {
     name = vname;
   };
@@ -26,7 +28,8 @@ function Todo(vname) {
     priority: this.getPriority(),
     checked: this.isChecked(),
   });
-  this.edit = (newDescription, newDate, newPriority, newChecked) => {
+  this.edit = (newId, newDescription, newDate, newPriority, newChecked) => {
+    id = newId;
     description = newDescription;
     date = newDate;
     priority = newPriority;

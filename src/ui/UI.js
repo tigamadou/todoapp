@@ -31,9 +31,9 @@ class UI {
 
     this.projectList = createDom('ul', null, [{ name: 'class', value: 'projectList' }]);
 
-    this.sidebar_content.append(this.newProjectButton,this.projectList);
+    this.sidebar_content.append(this.newProjectButton, this.projectList);
 
-    this.projects.append(this.projects_header,this.sidebar_content);
+    this.projects.append(this.projects_header, this.sidebar_content);
     this.sidebar.appendChild(this.projects);
 
     this.container = createDom('div', null, [{ name: 'class', value: 'container' }]);
@@ -46,7 +46,7 @@ class UI {
     this.views = [
       {
         name: 'default',
-        value: this.defaultView(),
+        value: UI.defaultView(),
       },
       {
         name: 'newProject',
@@ -59,7 +59,7 @@ class UI {
     ];
   }
 
-  defaultView() {
+  static defaultView() {
     const viewBody = createDom('div', null, [{ name: 'class', value: 'body' }]);
     const defaultView = createDom('div', null, [{ name: 'class', value: 'defaultView' }]);
     const viewtitle = createDom('h2', 'WelCome on ToDo App', [{ name: 'class', value: 'title' }]);
@@ -169,16 +169,14 @@ class UI {
       todoCheckInput.setAttribute('checked', true);
       TodoElement.classList.add('is-checked');
     }
-    TodoElement.classList.add(`is-${todo.getPriority()}`)
+    TodoElement.classList.add(`is-${todo.getPriority()}`);
     TodoElement.append(todoCheckInput, todoLabel, todoDetails);
 
     this.todoList.appendChild(TodoElement);
   }
 
-  
-
   selectProject(project) {
-    this.unselectAllProject();
+    UI.unselectAllProject();
     const selected = document.querySelector(`#${project.getId()}`);
     selected.classList.add('active');
     this.selectedProject = project;
@@ -187,7 +185,7 @@ class UI {
     return true;
   }
 
-  unselectAllProject() {
+  static unselectAllProject() {
     const elements = document.querySelectorAll('.projectList .project');
     elements.forEach((e) => {
       e.classList.remove('active');

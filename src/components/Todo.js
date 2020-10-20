@@ -2,7 +2,7 @@ function Todo(vname) {
   let name = vname;
   let description = null;
   let date = 'Today';
-  let priority = 'high';
+  let priority = 'medium';
   let checked = false;
   const timeStamp = new Date().getTime();
   const id = `${vname.toLowerCase().replace(/\W/g, '')}${timeStamp}`;
@@ -19,10 +19,14 @@ function Todo(vname) {
   this.toggleChecked = () => { checked = !checked; };
 
   this.getDatas = () => ({
-    id: this.getId(), name: this.getName(), description: this.getDescription(), date: this.getDate(), priority: this.getPriority(), checked: this.isChecked(),
+    id: this.getId(),
+    name: this.getName(),
+    description: this.getDescription(),
+    date: this.getDate(),
+    priority: this.getPriority(),
+    checked: this.isChecked(),
   });
-  this.edit = ( newDescription, newDate, newPriority, newChecked) => {
-
+  this.edit = (newDescription, newDate, newPriority, newChecked) => {
     description = newDescription;
     date = newDate;
     priority = newPriority;

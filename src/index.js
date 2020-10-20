@@ -14,15 +14,14 @@ if (!localStorage.getItem('projects')) {
   defaultProject.addTodo(new Todo('Default Task'));
   APP.addProject(defaultProject);
   Layout.addProject(defaultProject);
-
 } else {
   const LocalDatas = JSON.parse(localStorage.getItem('projects'));
 
   LocalDatas.forEach((element) => {
     const project = new Project(element.name);
     element.todos.forEach((todo) => {
-      let theTodo = new Todo(todo.name);
-      theTodo.edit(todo.description,todo.date,todo.priority,todo.checked)
+      const theTodo = new Todo(todo.name);
+      theTodo.edit(todo.description, todo.date, todo.priority, todo.checked);
       project.addTodo(theTodo);
     });
     APP.addProject(project);
@@ -33,7 +32,7 @@ if (!localStorage.getItem('projects')) {
 Layout.renderView('default');
 
 Layout.newProjectButton.addEventListener('click', () => {
-  Layout.unselectAllProject();
+  Layout.constructor.unselectAllProject();
   Layout.renderView('newProject');
 });
 Layout.projectForm.addEventListener('submit', (event) => {
@@ -44,13 +43,15 @@ Layout.projectForm.addEventListener('submit', (event) => {
     const project = new Project(name);
     const done = APP.addProject(project);
     if (!done) {
-      alert('Project already existed');
+      // alert('Project already existed');
       return false;
     }
     Layout.projectFormFieldInput.value = '';
     Layout.addProject(project);
     APP.storeToLocal();
+    return true;
   }
+  return false;
 });
 
 Layout.app.addEventListener('submit', (event) => {
@@ -61,13 +62,15 @@ Layout.app.addEventListener('submit', (event) => {
     const todo = new Todo(name);
     const added = APP.addTodo(todo);
     if (!added) {
-      alert('Todo already existed in this project');
+      // alert('Todo already existed in this project');
       return false;
     }
     Layout.addTodo(todo);
     Layout.todoFormFieldInput.value = '';
     APP.storeToLocal();
+    return true;
   }
+  return false;
 });
 
 Layout.projectList.addEventListener('click', (event) => {
@@ -80,6 +83,7 @@ Layout.projectList.addEventListener('click', (event) => {
       Layout.renderView('showProject');
     }
   }
+  return true;
 });
 
 Layout.app.addEventListener('click', (event) => {
@@ -88,12 +92,13 @@ Layout.app.addEventListener('click', (event) => {
 
     const todo = APP.getTodo(id);
     if (!todo) {
-      alert('Todo Not found!');
+      // alert('Todo Not found!');
       return false;
     }
-    var todoLi = document.getElementById(id);
+    const todoLi = document.getElementById(id);
     todoLi.classList.toggle('is-checked');
     APP.upDateTodoChecked(todo);
     APP.storeToLocal();
   }
+  return true;
 });

@@ -1,20 +1,21 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-$primaryColor: #e84393;
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+$primaryColor: #ff2e63;
 $default: #ccc;
-$success: #1abc9c;
+$success: #08d9d6;
 $warning: #f39c12;
 $danger:  #e74c3c;
 html,
 body {
   padding: 0;
-	background: $primaryColor;
+	background: #eaeaea;
 	margin: auto;
 	
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	
+	font-family: 'Pangolin', cursive;
 }
 *{
 	box-sizing: border-box;
@@ -30,16 +31,17 @@ ul{
 .app {
 	width:100%;
 	width: 1200px;
-  	height: 100vh;
+  	height: 90vh;
 	display: flex;
 	background: #fff;
 	border-radius: 30px;
 	overflow: hidden;
+	box-shadow: 0px 20px 20px -10px rgba(0,0,0,.3);
   .sidebar {
 		margin: 0;
 		background: #fff;
 		width: 20vw;		
-		box-shadow: 5px 0px 5px lighten(#000000, 90%);
+		box-shadow: 5px 0px 5px rgba(0,0,0,.1);
 		z-index: 1;
 		.projects{
 			display: flex;
@@ -101,10 +103,10 @@ ul{
 		display: flex;
 		flex-direction: column;
 		.header{
-			background: #f9f9f9;
+			background: $primaryColor;
 			padding: 1rem 2rem;
 			margin: 0;
-			
+			color: #fff;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -259,9 +261,16 @@ ul{
 						z-index: 3;
 					}
 					&.is-checked{
-						background: #f9f9f9;
+						background: rgb(254,254,254);
+						color: #ccc;
+						
 						.title{
 							text-decoration: line-through
+						}
+						&:hover{
+							transform: none;
+							box-shadow: none;
+							
 						}
 					}
 					input[type=checkbox]{
@@ -303,7 +312,7 @@ ul{
 						line-height: 30px;
 						text-align: center;
 						color: #fff;
-						background: $primaryColor;
+						background: $success;
 						border-radius: 50%;
 						transform: scale(0);
 						transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -322,7 +331,7 @@ ul{
 					.preview{
 						flex: 1;
 						font-size: 1.2rem;
-						color: #333;
+						
 					
 						line-height: 30px;
 						.title{
@@ -331,7 +340,7 @@ ul{
 						}
 						.tag{
 							font-size: 1rem;
-							color: #333;
+							
 							.icon{
 								margin-right: 16px;
 								font-size: 1.2rem;

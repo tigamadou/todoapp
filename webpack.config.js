@@ -1,7 +1,7 @@
 const path = require('path');
-require('dotenv').config();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+require('dotenv').config();
 
 module.exports = (env) => ({
   entry: './src/index.js',
@@ -16,7 +16,7 @@ module.exports = (env) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: './',
+    publicPath: '/',
   },
   mode: env ? 'production' : 'development',
   devtool: 'inline-source-map',

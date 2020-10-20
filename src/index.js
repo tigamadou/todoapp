@@ -11,10 +11,10 @@ document.body.appendChild(Layout.render());
 
 if (!localStorage.getItem('projects')) {
   const defaultProject = new Project('Today');
+  defaultProject.addTodo(new Todo('Default Task'));
   APP.addProject(defaultProject);
-  APP.addTodo(new Todo('Default Task'));
   Layout.addProject(defaultProject);
-  window.location.reload();
+
 } else {
   const LocalDatas = JSON.parse(localStorage.getItem('projects'));
 

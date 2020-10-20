@@ -25,16 +25,15 @@ class UI {
     this.projects_h1 = createDom('h1', this.title);
     this.newProjectButton = createDom('div', 'Create New Project', [{ name: 'class', value: 'newProjectButton' }]);
 
-    this.projects_header.append(this.projects_h1, this.newProjectButton);
-    this.projects.appendChild(this.projects_header);
+    this.projects_header.appendChild(this.projects_h1);
 
     this.sidebar_content = createDom('div', null, [{ name: 'class', value: 'content' }]);
 
     this.projectList = createDom('ul', null, [{ name: 'class', value: 'projectList' }]);
 
-    this.sidebar_content.appendChild(this.projectList);
+    this.sidebar_content.append(this.newProjectButton,this.projectList);
 
-    this.projects.appendChild(this.sidebar_content);
+    this.projects.append(this.projects_header,this.sidebar_content);
     this.sidebar.appendChild(this.projects);
 
     this.container = createDom('div', null, [{ name: 'class', value: 'container' }]);
@@ -170,10 +169,13 @@ class UI {
       todoCheckInput.setAttribute('checked', true);
       TodoElement.classList.add('is-checked');
     }
+    TodoElement.classList.add(`is-${todo.getPriority()}`)
     TodoElement.append(todoCheckInput, todoLabel, todoDetails);
 
     this.todoList.appendChild(TodoElement);
   }
+
+  
 
   selectProject(project) {
     this.unselectAllProject();

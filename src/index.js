@@ -24,11 +24,9 @@ if (!localStorage.getItem('projects')) {
       let theTodo = new Todo(todo.name);
       theTodo.edit(todo.description,todo.date,todo.priority,todo.checked)
       project.addTodo(theTodo);
-      console.log(todo);
     });
     APP.addProject(project);
     Layout.addProject(project);
-    console.log(project);
   });
 }
 
@@ -93,7 +91,8 @@ Layout.app.addEventListener('click', (event) => {
       alert('Todo Not found!');
       return false;
     }
-
+    var todoLi = document.getElementById(id);
+    todoLi.classList.toggle('is-checked');
     APP.upDateTodoChecked(todo);
     APP.storeToLocal();
   }

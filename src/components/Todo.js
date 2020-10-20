@@ -2,7 +2,7 @@ function Todo(vname) {
   let name = vname;
   let description = null;
   let date = 'Today';
-  let priority = 'default';
+  let priority = 'high';
   let checked = false;
   const timeStamp = new Date().getTime();
   const id = `${vname.toLowerCase().replace(/\W/g, '')}${timeStamp}`;

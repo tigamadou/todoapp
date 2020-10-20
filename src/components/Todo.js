@@ -1,27 +1,33 @@
-class Todo {
-  constructor(name, description, date, priority) {
-    this.name = name;
-    this.description = description;
-    this.date = date;
-    this.priority = priority;
-    this.checked = false;
-  }
+function Todo(vname) {
+  let name = vname;
+  let description = null;
+  let date = 'Today';
+  let priority = 'default';
+  let checked = false;
+  const timeStamp = new Date().getTime();
+  const id = `${vname.toLowerCase().replace(/\W/g, '')}${timeStamp}`;
 
-  setName(name) {
-    this.name = name;
-  }
+  this.setName = (vname) => {
+    name = vname;
+  };
+  this.getId = () => id;
+  this.getName = () => name;
+  this.getDescription = () => description;
+  this.getDate = () => date;
+  this.getPriority = () => priority;
+  this.isChecked = () => checked;
+  this.toggleChecked = () => { checked = !checked; };
 
-  getName() {
-    return this.name;
-  }
+  this.getDatas = () => ({
+    id: this.getId(), name: this.getName(), description: this.getDescription(), date: this.getDate(), priority: this.getPriority(), checked: this.isChecked(),
+  });
+  this.edit = ( newDescription, newDate, newPriority, newChecked) => {
 
-  delete() {
-    this.deleted = true;
-  }
-
-  complete() {
-    this.checked = true;
-  }
+    description = newDescription;
+    date = newDate;
+    priority = newPriority;
+    checked = newChecked;
+  };
 }
 
 export default Todo;

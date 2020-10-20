@@ -99,31 +99,100 @@ class UI {
   showProjectView() {
     const containerHeader = createDom('div', null, [{ name: 'class', value: 'header' }]);
     this.containerHeadertitle = createDom('h2', this.selectedProject.getName(), [{ name: 'class', value: 'title' }]);
-    this.containerHeaderButton = createDom('div', 'Add new Task', [{ name: 'class', value: 'addNewTodo' }]);
-    containerHeader.append(this.containerHeadertitle, this.containerHeaderButton);
+    containerHeader.append(this.containerHeadertitle);
     // this.renderView([containerHeader]);
-    return containerHeader;
+    const viewBody = createDom('div', null, [{ name: 'class', value: 'body' }]);
+    this.todoForm = createDom('form', null, [{ name: 'class', value: 'TodoForm' }]);
+    const todoFormField = createDom('div', null, [{ name: 'class', value: 'field' }]);
+    this.todoFormFieldInput = createDom('input', null,
+      [
+        { name: 'class', value: 'input' },
+        { name: 'type', value: 'text' },
+        { name: 'name', value: 'todo-name' },
+        { name: 'id', value: 'newTodoInput' },
+        { name: 'required', value: true },
+        { name: 'placeholder', value: 'Add a Task' },
+      ]);
+    this.todoFormFieldButton = createDom('button', null, [{ name: 'class', value: 'btn' }]);
+    const todoFormFieldIcon = createDom('i', null, [{ name: 'class', value: 'fa fa-plus' }]);
+    this.todoFormFieldButton.appendChild(todoFormFieldIcon);
+    todoFormField.appendChild(this.todoFormFieldInput);
+    todoFormField.appendChild(this.todoFormFieldButton);
+    this.todoForm.appendChild(todoFormField);
+
+    this.todoList = createDom('ul', null, [{ name: 'class', value: 'todoList' }]);
+
+    const todos = this.selectedProject.getTodos();
+    todos.forEach((todo) => this.addTodo(todo));
+    viewBody.append(this.todoForm, this.todoList);
+
+    return [containerHeader, viewBody];
   }
 
-  addProject(project){
-    let element = createDom('li',project.getName(),[{name:'class',value:'project'},{name:'id',value:project.getId()}]);
-    this.projectList.appendChild(element)
-    this.selectProject(project)
+  addProject(project) {
+    const element = createDom('li', project.getName(), [{ name: 'class', value: 'project' }, { name: 'id', value: project.getId() }]);
+    this.projectList.appendChild(element);
   }
 
-  selectProject(project){
-    let elements = document.querySelectorAll('.projectList .project');
-    elements.forEach((e)=>{
-      e.classList.remove('active');
-    })
-    let selected = document.querySelector(`#${project.getId()}`)
-    selected.classList.add('active')
-    this.selectedProject= project
+  addTodo(todo) {
+    const TodoElement = createDom('li', null, [{ name: 'class', value: 'todo' }, { name: 'id', value: todo.getId() }]);
+    const todoCheckInput = createDom('input', null,
+      [
+        { name: 'class', value: 'input' },
+        { name: 'type', value: 'checkbox' },
+        { name: 'name', value: 'todoChecklist' },
+        { name: 'id', value: `${todo.getId()}TodoInput` },
+      ]);
+
+    const todoLabel = createDom('label', null, [{ name: 'for', value: `${todo.getId()}TodoInput` }, { name: 'class', value: 'todoChecklistLabel' }, { name: 'data-id', value: todo.getId() }]);
+    const todoDetails = createDom('div', null, [{ name: 'class', value: 'details' }]);
+    const todoPreview = createDom('div', null, [{ name: 'class', value: 'preview' }]);
+    const todoPreviewTitle = createDom('div', todo.getName(), [{ name: 'class', value: 'title' }]);
+    const todoPreviewTagContainer = createDom('div', null, [{ name: 'class', value: 'tags' }]);
+
+    const todoPreviewDateTag = createDom('span', null, [{ name: 'class', value: 'tag' }]);
+    const todoPreviewDateTagIcon = createDom('span', null, [{ name: 'class', value: 'icon' }]);
+    const todoPreviewDateTagIconElement = createDom('i', null, [{ name: 'class', value: 'fa fa-calendar' }]);
+    todoPreviewDateTagIcon.appendChild(todoPreviewDateTagIconElement);
+    const todoPreviewDateTagContent = createDom('span', todo.getDate());
+    todoPreviewDateTag.append(todoPreviewDateTagIcon, todoPreviewDateTagContent);
+    todoPreviewTagContainer.appendChild(todoPreviewDateTag);
+    todoPreview.append(todoPreviewTitle, todoPreviewTagContainer);
+
+    const todoMoreButtonIcon = createDom('i', null, [{ name: 'class', value: 'fa fa-chevron-right' }]);
+    const todoMoreButton = createDom('div', null, [{ name: 'class', value: 'button' }]);
+    todoMoreButton.appendChild(todoMoreButtonIcon);
+    const todoMore = createDom('div', null, [{ name: 'class', value: 'more' }]);
+    todoMore.appendChild(todoMoreButton);
+    todoDetails.append(todoPreview, todoMore);
+
+    if (todo.isChecked()) {
+      todoCheckInput.setAttribute('checked', true);
+      TodoElement.classList.add('is-checked');
+    }
+    TodoElement.append(todoCheckInput, todoLabel, todoDetails);
+
+    this.todoList.appendChild(TodoElement);
+  }
+
+  selectProject(project) {
+    this.unselectAllProject();
+    const selected = document.querySelector(`#${project.getId()}`);
+    selected.classList.add('active');
+    this.selectedProject = project;
+    this.views[2].value = '';
     this.views[2].value = this.showProjectView();
+    return true;
+  }
+
+  unselectAllProject() {
+    const elements = document.querySelectorAll('.projectList .project');
+    elements.forEach((e) => {
+      e.classList.remove('active');
+    });
   }
 
   renderView(viewName) {
-    
     if (this.activeView === viewName) { return false; }
     this.activeView = viewName;
     const views = this.views.find(element => element.name === viewName);

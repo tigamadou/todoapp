@@ -16,7 +16,7 @@
   <h3 align="center">Todo APp</h3>
 
   <p align="center">
-    A simple To-do list app build with Vanilla JS and Webpack
+    A simple To-do list app built with Vanilla JS and Webpack
     <br />
     <a href="#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
@@ -53,7 +53,7 @@
 
 ![screenshot](./screenshot.png)
 
-This is a beautifull Todo list app we've build following [Microverse Program](https://microverse.org)  and [TheOdinProject](https://www.theodinproject.com/courses/javascript/lessons/todoapp) guidelines.
+This is a beautiful Todo list app we've built following [Microverse Program](https://microverse.org)  and [TheOdinProject](https://www.theodinproject.com/courses/javascript/lessons/todoapp) guidelines.
 
 ### Built With
 * [Javascript ES6]()

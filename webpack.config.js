@@ -16,7 +16,6 @@ module.exports = (env) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: './',
   },
   mode: env ? 'production' : 'development',
   devtool: 'inline-source-map',

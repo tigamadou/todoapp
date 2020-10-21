@@ -4,7 +4,6 @@ function Todo(vname) {
   let date = null;
   let priority = 'default';
   let checked = false;
-  // const timeStamp = ;
   let id = `${vname.toLowerCase().replace(/\W/g, '')}${new Date().getTime()}`;
   this.setId = (name) => {
     id = `${name.toLowerCase().replace(/\W/g, '')}${new Date().getTime()}`;

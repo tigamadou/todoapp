@@ -42,7 +42,6 @@ Layout.projectForm.addEventListener('submit', (event) => {
     const project = new Project(name);
     const done = APP.addProject(project);
     if (!done) {
-      // alert('Project already existed');
       return false;
     }
     Layout.projectFormFieldInput.value = '';
@@ -62,7 +61,6 @@ Layout.app.addEventListener('submit', (event) => {
       const todo = new Todo(name);
       const added = APP.addTodo(todo);
       if (!added) {
-        // alert('Todo already existed in this project');
         return false;
       }
       Layout.addTodo(todo);
@@ -108,7 +106,6 @@ Layout.app.addEventListener('click', (event) => {
 
     const todo = APP.getTodo(id);
     if (!todo) {
-      // alert('Todo Not found!');
       return false;
     }
     const todoLi = document.getElementById(id);
@@ -121,7 +118,6 @@ Layout.app.addEventListener('click', (event) => {
     const id = event.target.getAttribute('data-id');
     const todo = APP.getTodo(id);
     if (!todo) {
-      // alert('Todo Not found!');
       return false;
     }
     APP.setSelectedTodo(todo);

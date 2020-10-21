@@ -21,7 +21,7 @@
     <a href="#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#" target="_blank" >View Demo</a>
+    <a href="https://rawcdn.githack.com/tigamadou/todoapp/9f3d9db6b0f81a66dc2b918741a505b5cf2e3911/dist/index.html" target="_blank" >View Demo</a>
     ·
     <a href="https://github.com/tigamadou/todoapp/issues">Report Bug</a>
     ·

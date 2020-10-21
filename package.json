@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "start": "webpack-dev-server --env production --open",
+    "build": "webpack -p --env production",
     "eslint": "npx eslint . --fix",
     "stylelint": "npx stylelint \"**/*.{css,scss}\" --fix"
   },
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/tigamadou/todoapp#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
     "eslint": "^6.8.0",

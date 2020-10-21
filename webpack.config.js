@@ -16,7 +16,7 @@ module.exports = (env) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    publicPath: '/',
+    publicPath: './',
   },
   mode: env ? 'production' : 'development',
   devtool: 'inline-source-map',
@@ -25,6 +25,11 @@ module.exports = (env) => ({
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
       {
         test: /\.s[ac]ss$/,
         use: [

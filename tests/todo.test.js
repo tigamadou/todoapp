@@ -20,7 +20,14 @@ test('To test if the project data contains, Name, Id, and Todo', () => {
 
 test('To test the edit function if it contains the necessary parameters', () => {
   const testTodo = new Todo(defaultName);
-  const recievedData = testProject.edit(defaultName);
-  expect(receivedData[0]).toEqual(defaultName);
+  let id = ''
+  let description = 'apple'
+  let date = new Date().getTime()
+  let priority = 'default'
+  let checked = false
+  testTodo.edit(id, description, date, priority, checked)
+  const receivedData = testTodo.getDatas()
+  expect(receivedData.description).toEqual(description);
+
   
 });

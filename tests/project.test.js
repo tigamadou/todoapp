@@ -53,7 +53,7 @@ test('Projects datas should  contains the added todos datas', () => {
   const todo1 = new Todo(todoName);
   const todoName2 = 'todoName2';
   const todo2 = new Todo(todoName2);
-  const datas = [todo1.getDatas(), todo2.getDatas()]
+  const datas = [todo1.getDatas(), todo2.getDatas()];
   testProject.addTodo(todo1);
   testProject.addTodo(todo2);
   const projectDatas = testProject.getDatas();
@@ -65,7 +65,7 @@ test('The updated todo should contain the updated values', () => {
   const todoName = 'todoName';
   const todo1 = new Todo(todoName);
   testProject.addTodo(todo1);
-  const newName= 'Edited Name';
+  const newName = 'Edited Name';
   const Newtodo = new Todo(newName);
   testProject.updateTodo(0, Newtodo);
   const todos = testProject.getTodos();

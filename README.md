@@ -1,5 +1,5 @@
 # Todo App
-
+![screenshot](./screenshot.png)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -40,7 +40,7 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
+* [Testing](#testing)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![screenshot](./screenshot.png)
+
 
 This is a beautiful Todo list app we've built following [Microverse Program](https://microverse.org)  and [TheOdinProject](https://www.theodinproject.com/courses/javascript/lessons/todoapp) guidelines.
 
@@ -85,7 +85,7 @@ npm install npm@latest -g
 git clone https://github.com/tigamadou/todoapp
 ```
 
-2. Browser to the cloned folder
+2. Browse to the cloned folder
 ```sh
 cd todoapp
 ```
@@ -94,14 +94,27 @@ cd todoapp
 ```sh
 npm install / yarn 
 ```
-4. Run the development server 
+
+## Usage
+1. Browse to the cloned folder
+```sh
+cd todoapp
+```
+2. Run the development server 
 ```sh
 npm start 'or' yarn start
 ```
+<!-- Testing -->
+## Testing
+1. Browse to the cloned folder
+```sh
+cd todoapp
+```
 
-
-
-
+2. Run the test command
+```sh
+npm test 'or' yarn test
+```
 <!-- CONTRIBUTING -->
 ## Contributing
 

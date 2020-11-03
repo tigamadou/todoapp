@@ -13,6 +13,7 @@ function Project(vname) {
 
   this.addTodo = (todo) => {
     todos.push(todo);
+    return todos;
   };
 
   this.deleteTodo = (index) => {

@@ -45,6 +45,7 @@ function App() {
     todo.setId(data.name);
     project.updateTodo(todoIndex, todo);
     projects[projectIndex] = project;
+    this.setSelectedProject(project);
   };
 
   this.deleteTodo = () => {
